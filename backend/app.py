@@ -4,6 +4,7 @@ from starlette.middleware.cors import CORSMiddleware
 import models
 import schemas
 import crud
+import telegram_service
 from database import engine, get_db
 
 
@@ -25,12 +26,14 @@ app.add_middleware(
 
 
 @app.post('/submit_form', response_model=schemas.ContactFormResponse)
-def submit_form(form_data: schemas.ContactFormCreate, db: Session = Depends(get_db)):
+async def submit_form(form_data: schemas.ContactFormCreate, db: Session = Depends(get_db)):
     if not form_data.name:
         raise HTTPException(status_code=400, detail='Name is required')
 
     try:
         db_entry = crud.create_contact_form_entry(db=db, form_data=form_data)
+
+        await telegram_service.send_telegram_notification_aiogram(form_data)
 
         return db_entry
     except Exception as e:
