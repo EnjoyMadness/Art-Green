@@ -432,7 +432,7 @@ function App() {
                 
                 <p className="form-notice">
                   Нажимая кнопку, вы соглашаетесь с нашей 
-                  <a href="#privacy" className="privacy-link"> политикой конфиденциальности</a>
+                  <a href="https://legal.max.ru/pp" className="privacy-link">политикой конфиденциальности</a>
                 </p>
               </div>
             </form>
