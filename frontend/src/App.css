@@ -25,7 +25,7 @@
   height: 100%;
   right: 0;
   top: 0;
-  background: url('koricnevaa-derevannaa-skameika-vozle-zelenyh-rastenii.jpg') center/cover;
+  background: url('../public/koricnevaa-derevannaa-skameika-vozle-zelenyh-rastenii.jpg') center/cover;
   z-index: 1;
 }
 
@@ -131,7 +131,7 @@
 .free-consultation-line {
   width: 50px;
   height: 20px;
-  background-image: url('Arrow 1.svg');
+  background-image: url('../public/Arrow 1.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -185,7 +185,7 @@
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  background-image: url('Vector.svg');
+  background-image: url('../public/Vector.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -247,7 +247,7 @@ position: absolute;
 .about-image-small {
   width: 335px;
   height: 452px;
-  background: url('Firefly_Gemini_Flash_ultra_realistic_evening_photo_of_a_modern_high (2).png') center/cover;
+  background: url('../public/Firefly_Gemini_Flash_ultra_realistic_evening_photo_of_a_modern_high (2).png') center/cover;
   border-radius: 8px;
 }
 
@@ -287,7 +287,7 @@ position: absolute;
 .about-image-large {
   width: 100%;
   height: 290px;
-  background: url('Firefly.png') center/cover;
+  background: url('../public/Firefly.png') center/cover;
   border-radius: 8px;
   /* margin-top не нужен, т.к. есть gap у .about-right */
 }
@@ -328,19 +328,19 @@ position: absolute;
 }
 
 .service-item:nth-child(1) .service-image {
-  background-image: url('дизайн.png');
+  background-image: url('../public/дизайн.png');
 }
 
 .service-item:nth-child(2) .service-image {
-  background-image: url('озеленение.png');
+  background-image: url('../public/озеленение.png');
 }
 
 .service-item:nth-child(3) .service-image {
-  background-image: url('автополив.png');
+  background-image: url('../public/автополив.png');
 }
 
 .service-item:nth-child(4) .service-image {
-  background-image: url('освещение.png');
+  background-image: url('../public/освещение.png');
 }
 
 .service-image:hover {
@@ -412,7 +412,7 @@ position: absolute;
 .goals-banner {
   height: 251px;
   margin-top: 30px;
-  background: url('Firefly_Gemini Flash (2).png') center/cover;
+  background: url('../public/Firefly_Gemini Flash (2).png') center/cover;
   border-radius: 8px;
 }
 
@@ -505,7 +505,7 @@ position: absolute;
   left: 0;
   width: 100%;
   height: 200px;
-  background: url('25673883_xwcs_u35a_211202 1.svg') center/cover no-repeat;
+  background: url('../public/25673883_xwcs_u35a_211202 1.svg') center/cover no-repeat;
   z-index: 2;
 }
 
