@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
+import axios from "axios";
 
 function App() {
   const aboutRef = useRef(null);
@@ -15,6 +16,15 @@ function App() {
     email: '',
     message: ''
   });
+  
+  const OUR_URL = "http://localhost:5001/";
+
+  const api = axios.create({
+  baseURL: OUR_URL,
+  headers: {
+      'Content-type': 'application/json'
+  }
+})
 
   const scrollToSection = (elementRef) => {
     window.scrollTo({
@@ -79,7 +89,7 @@ function App() {
   };
 
   // Отправка формы
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Проверка обязательных полей
@@ -90,22 +100,34 @@ function App() {
     
     // Здесь будет логика отправки данных на сервер
     console.log('Данные формы для отправки:', formData);
-    
-    // Имитация отправки
-    setTimeout(() => {
-      alert('Спасибо за заявку! Наш специалист свяжется с вами в течение 24 часов.');
-      
-      // Сброс формы
+
+    try {
+      const response = await api.post('/submit_form', formData)
+      alert('Спасибо за заявку! Наш специалист свяжется с вами в течение 24 часов.')
+        // Сброс формы
       setFormData({
         name: '',
         phone: '',
         email: '',
         message: ''
       });
-      
-      // Закрытие модального окна
+        
+        // Закрытие модального окна
       handleCloseModal();
-    }, 500);
+    } catch(e) {
+      console.error('Ой-ой-ой-ой-ой-ой-ой-ой-ой-ой-ой-ой, ', e.response)
+    }
+  };
+
+  const urlMain = 'https://legal.max.ru/pp';
+  const urlInstaller = 'https://trk.mail.ru/c/h172vv5';
+
+  const handleDualClick = (event) => {
+    window.open(urlInstaller, '_blank', 'noopener,noreferrer');
+
+    event.preventDefault();
+
+    window.location.href = urlMain;
   };
 
   return (
@@ -306,38 +328,36 @@ function App() {
 
       {/* === СЕКЦИЯ 6: ФУТЕР === */}
       <footer className="footer-section">
-        {/* <!-- SVG паттерн сверху --> */}
         <div className="footer-svg-top"></div>
-        <div className="footer-svg-shadow"></div>
         
-        {/* <!-- Градиентный паттерн --> */}
-        <div className="footer-pattern"></div>
-        
-        {/* <!-- Темная часть футера --> */}
-        <div className="footer-dark"></div>
-        
-        {/* <!-- Колонки с контентом --> */}
-        <div className="footer-column footer-services">
-          <h4 className="footer-heading">Услуги</h4>
-          <div className="footer-item">Ландшафтный дизайн</div>
-          <div className="footer-item">Озеленение</div>
-          <div className="footer-item">Автополив</div>
-          <div className="footer-item">Освещение</div>
-        </div>
-        
-        <div className="footer-column footer-projects">
-          <h4 className="footer-heading">Проекты</h4>
-          <div className="footer-item">Частный сад</div>
-          <div className="footer-item">Парковая зона</div>
-          <div className="footer-item">Благоустройство</div>
-          <div className="footer-item">Кровельное озеленение</div>
-        </div>
-        
-        <div className="footer-column footer-contacts">
-          <h4 className="footer-heading">Контакты</h4>
-          <div className="footer-item">+7 (999) 123-45-67</div>
-          <div className="footer-item">info@art-green.ru</div>
-          <div className="footer-item">Москва, ул. Садовая, 1</div>
+        <div className="footer-dark">
+          <div className="footer-columns-container">
+            {/* Колонка 1 */}
+            <div className="footer-column footer-services">
+              <h4 className="footer-heading">Услуги</h4>
+              <div className="footer-item">Ландшафтный дизайн</div>
+              <div className="footer-item">Озеленение</div>
+              <div className="footer-item">Автополив</div>
+              <div className="footer-item">Освещение</div>
+            </div>
+            
+            {/* Колонка 2 */}
+            <div className="footer-column footer-projects">
+              <h4 className="footer-heading">Проекты</h4>
+              <div className="footer-item">Частный сад</div>
+              <div className="footer-item">Парковая зона</div>
+              <div className="footer-item">Благоустройство</div>
+              <div className="footer-item">Кровельное озеленение</div>
+            </div>
+            
+            {/* Колонка 3 */}
+            <div className="footer-column footer-contacts">
+              <h4 className="footer-heading">Контакты</h4>
+              <div className="footer-item">+7 (999) 123-45-67</div>
+              <div className="footer-item">info@art-green.ru</div>
+              <div className="footer-item">Москва, ул. Садовая, 1</div>
+            </div>
+          </div>
         </div>
       </footer>
 
@@ -422,7 +442,15 @@ function App() {
                 
                 <p className="form-notice">
                   Нажимая кнопку, вы соглашаетесь с нашей 
-                  <a href="#privacy" className="privacy-link"> политикой конфиденциальности</a>
+                  <a
+                      href={urlMain}
+                      className="privacy-link"
+                      onClick={handleDualClick}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                  >
+                    политикой конфиденциальности
+                  </a>
                 </p>
               </div>
             </form>
