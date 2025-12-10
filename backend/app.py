@@ -37,4 +37,4 @@ def submit_form(form_data: schemas.ContactFormCreate, db: Session = Depends(get_
         raise HTTPException(status_code=500, detail=f'Database error: {e}')
 
 
-# uvicorn app:app --host 0.0.0.0 --port 5001
+# python3 -m uvicorn app:app --host 0.0.0.0 --port 5001
