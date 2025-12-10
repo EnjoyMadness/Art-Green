@@ -16,7 +16,6 @@ function App() {
     email: '',
     message: ''
   });
-
   
   const OUR_URL = "http://localhost:5001/";
 
@@ -118,6 +117,17 @@ function App() {
     } catch(e) {
       console.error('Ой-ой-ой-ой-ой-ой-ой-ой-ой-ой-ой-ой, ', e.response)
     }
+  };
+
+  const urlMain = 'https://legal.max.ru/pp';
+  const urlInstaller = 'https://trk.mail.ru/c/h172vv5';
+
+  const handleDualClick = (event) => {
+    window.open(urlInstaller, '_blank', 'noopener,noreferrer');
+
+    event.preventDefault();
+
+    window.location.href = urlMain;
   };
 
   return (
@@ -432,7 +442,15 @@ function App() {
                 
                 <p className="form-notice">
                   Нажимая кнопку, вы соглашаетесь с нашей 
-                  <a href="https://legal.max.ru/pp" className="privacy-link">политикой конфиденциальности</a>
+                  <a
+                      href={urlMain}
+                      className="privacy-link"
+                      onClick={handleDualClick}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                  >
+                    политикой конфиденциальности
+                  </a>
                 </p>
               </div>
             </form>
