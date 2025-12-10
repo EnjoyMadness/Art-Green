@@ -1341,6 +1341,7 @@ position: absolute;
     left: 20px;
     right: 20px;
     top: 90px;
+    margin-top: 12px;
   }
   
   .title {
@@ -1623,6 +1624,7 @@ position: absolute;
     left: 15px;
     right: 15px;
     top: 80px;
+    margin-top: 12px;
   }
   
   .title {
